@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+
+    <!--Page Title-->
+    <title>RushapoWeb</title>
+
+    <!--Meta Keywords and Description-->
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+
+    <!--Favicon-->
+    <link rel="shortcut icon" href="images/miku.ico" title="Favicon"/>
+
+    <!-- Main CSS Files -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Namari Color CSS -->
+    <link rel="stylesheet" href="css/namari-color.css">
+
+    <!--Icon Fonts - Font Awesome Icons-->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+
+    <!-- Animate CSS-->
+    <link href="css/animate.css" rel="stylesheet" type="text/css">
+
+    <!--Google Webfonts-->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+    
+    <!-- Custom styles for TikTok logo alignment and Gallery optimization -->
+    <style>
+        .social-icons img {
+            vertical-align: middle;
+            margin-right: 0;
+            display: inline-block;
+            position: relative;
+            top: -1px; /* Ajuste fino para alineación perfecta */
+            /* TikTok en su color original dorado */
+        }
+        
+        /* Cambiar color de iconos de redes sociales a dorado */
+        .social-icons a i {
+            color: #d4af37 !important;
+        }
+        
+        /* Estilos específicos cuando el header está en modo sticky/scroll */
+        #header.sticky .social-icons a i,
+        #header.nav-solid .social-icons a i {
+            color: #d4af37 !important; /* Mantener dorado también en scroll */
+        }
+        
+        /* TikTok mantiene su color original en scroll también */
+        
+        /* Para iconos del footer también */
+        #landing-footer .social-icons a i {
+            color: #d4af37 !important;
+        }
+        
+        /* TikTok en su color original en footer */
+        
+        /* Centrar iconos de redes sociales en el footer */
+        #landing-footer .social-icons {
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+        
+        #landing-footer .social-icons li {
+            margin: 0 10px;
+        }
+        
+        /* Estilos para galería uniforme y estética */
+        #gallery {
+            padding: 60px 0;
+        }
+        
+        #gallery a {
+            margin-bottom: 20px;
+            display: block;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            background: #f8f8f8;
+        }
+        
+        #gallery a:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+        }
+        
+        #gallery img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            object-position: center top;
+            transition: transform 0.3s ease;
+            display: block;
+        }
+        
+        #gallery a:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* Añadir padding a las columnas para mejor espaciado */
+        #gallery .col-3 {
+            padding: 0 10px;
+        }
+        
+        /* Título para la galería */
+        #gallery::before {
+            content: "";
+            display: block;
+            width: 100%;
+            margin-bottom: 40px;
+        }
+        
+        /* Responsive adjustments para galería */
+        @media (max-width: 768px) {
+            #gallery img {
+                height: 220px;
+            }
+            
+            #gallery .col-3 {
+                padding: 0 5px;
+                margin-bottom: 15px;
+            }
+        }
+        
+        /* Responsive para la portada/banner - CORREGIDO */
+        @media (max-width: 768px) {
+            #banner {
+                min-height: 100vh;
+                padding: 0;
+                display: flex;
+                align-items: center;
+            }
+            
+            #banner-content {
+                padding: 40px 20px;
+                text-align: center;
+                width: 100%;
+            }
+            
+            #banner-content .col-61 {
+                width: 100%;
+                float: none;
+            }
+            
+            #banner-content .section-heading h1 {
+                font-size: 2.2em !important;
+                line-height: 1.2;
+                margin-bottom: 15px;
+                color: inherit;
+            }
+            
+            #banner-content .section-heading h2 {
+                font-size: 1em !important;
+                line-height: 1.4;
+                margin-bottom: 25px;
+                padding: 0 10px;
+                font-weight: 400;
+            }
+            
+            #banner-content .button {
+                font-size: 0.9em;
+                padding: 12px 20px;
+                margin-top: 15px;
+                display: inline-block;
+                width: auto;
+                max-width: 250px;
+                white-space: nowrap;
+            }
+            
+            /* Header responsive en móvil */
+            #header {
+                padding: 10px 0;
+                position: fixed;
+                top: 0;
+                width: 100%;
+                z-index: 1000;
+            }
+            
+            .social-icons {
+                display: none;
+            }
+            
+            #nav-main {
+                display: none;
+            }
+            
+            #nav-trigger {
+                display: block !important;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            #banner-content {
+                padding: 30px 15px;
+            }
+            
+            #banner-content .section-heading h1 {
+                font-size: 1.8em !important;
+                margin-bottom: 12px;
+            }
+            
+            #banner-content .section-heading h2 {
+                font-size: 0.9em !important;
+                padding: 0 5px;
+                margin-bottom: 20px;
+            }
+            
+            #banner-content .button {
+                font-size: 0.85em;
+                padding: 10px 18px;
+                max-width: 220px;
+            }
+            
+            .dark-mode-toggle {
+                top: 15px;
+                right: 15px;
+                width: 45px;
+                height: 45px;
+                font-size: 16px;
+            }
+        }
+        
+        /* Botón de modo oscuro */
+        .dark-mode-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #d4af37;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            z-index: 9999;
+            font-size: 18px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .dark-mode-toggle:hover {
+            background: #b8941f;
+            transform: scale(1.1);
+        }
+        
+        /* Estilos para modo oscuro */
+        body.dark-mode {
+            background-color: #1a1a1a;
+            color: #ffffff;
+        }
+        
+        body.dark-mode #banner {
+            background-color: #2d2d2d;
+        }
+        
+        body.dark-mode #content {
+            background-color: #1a1a1a;
+        }
+        
+        body.dark-mode .introduction {
+            background-color: #2d2d2d;
+        }
+        
+        body.dark-mode #services {
+            background-color: #1a1a1a;
+        }
+        
+        body.dark-mode #testimonials {
+            background-color: #2d2d2d;
+        }
+        
+        body.dark-mode #pricing {
+            background-color: #1a1a1a !important;
+        }
+        
+        body.dark-mode #landing-footer {
+            background-color: #2d2d2d;
+        }
+        
+        body.dark-mode .pricing-block {
+            background-color: #333333;
+            border: 1px solid #444444;
+        }
+        
+        body.dark-mode .pricing-block-content {
+            background-color: #333333;
+        }
+        
+        body.dark-mode .testimonial {
+            background-color: #333333;
+        }
+        
+        body.dark-mode .icon-block-description h4 {
+            color: #d4af37;
+        }
+        
+        body.dark-mode .section-title {
+            color: #ffffff;
+        }
+        
+        body.dark-mode .section-subtitle {
+            color: #cccccc;
+        }
+        
+        body.dark-mode #header {
+            background-color: rgba(45, 45, 45, 0.95);
+        }
+        
+        body.dark-mode #header.nav-solid {
+            background-color: #2d2d2d;
+        }
+        
+        body.dark-mode #nav-main ul li a {
+            color: #ffffff;
+        }
+        
+        body.dark-mode #gallery a {
+            background: #333333;
+        }
+        
+        body.dark-mode .page-border .top-border,
+        body.dark-mode .page-border .right-border,
+        body.dark-mode .page-border .bottom-border,
+        body.dark-mode .page-border .left-border {
+            background-color: #d4af37;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Botón de modo oscuro -->
+<button class="dark-mode-toggle" onclick="toggleDarkMode()" title="Cambiar modo oscuro">
+    🌙
+</button>
+
+<!-- Preloader -->
+<div id="preloader">
+    <div id="status" class="la-ball-triangle-path">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>
+<!--End of Preloader-->
+
+<div class="page-border" data-wow-duration="0.7s" data-wow-delay="0.2s">
+    <div class="top-border wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;"></div>
+    <div class="right-border wow fadeInRight animated" style="visibility: visible; animation-name: fadeInRight;"></div>
+    <div class="bottom-border wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;"></div>
+    <div class="left-border wow fadeInLeft animated" style="visibility: visible; animation-name: fadeInLeft;"></div>
+</div>
+
+<div id="wrapper">
+
+    <header id="banner" class="scrollto clearfix" data-enllax-ratio=".5">
+        <div id="header" class="nav-collapse">
+            <div class="row clearfix">
+                <div class="col-1">
+
+                    <!--Logo-->
+                    <div id="logo">
+
+                        <!-- Logo eliminado -->
+
+                    </div>
+                    <!--End of Logo-->
+
+                    <aside>
+
+                        <!--Social Icons in Header-->
+                        <ul class="social-icons">
+                            <li>
+                                <a target="_blank" title="Facebook" href="https://www.facebook.com/share/12M5ZDdPKKw/?mibextid=wwXIfr">
+                                    <i class="fa fa-facebook fa-1x"></i><span>Facebook</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a target="_blank" title="TikTok" href="https://www.tiktok.com/@ttvrushapo?_t=ZM-8yFtPM21kE4&_r=1">
+                                    <img src="images/tiktok.png" alt="TikTok" style="width: 18px; height: 18px;"><span>TikTok</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a target="_blank" title="Telegram" href="https://t.me/rushapobets">
+                                    <i class="fa fa-paper-plane fa-1x"></i><span>Telegram</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a target="_blank" title="Instagram" href="https://www.instagram.com/rushapoo?igsh=MXB3NDFkNTJpcnF3NA==">
+                                    <i class="fa fa-instagram fa-1x"></i><span>Instagram</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <!--End of Social Icons in Header-->
+
+                    </aside>
+
+                    <!--Main Navigation-->
+                    <nav id="nav-main">
+                        <ul>
+                            <li>
+                                <a href="#banner">Inicio</a>
+                            </li>
+                            <li>
+                                <a href="#about">Quiénes somos</a>
+                            </li>
+                            <li>
+                                <a href="#gallery">Testimonios</a>
+                            </li>
+                            <li>
+                                <a href="#services">Servicios</a>
+                            </li>
+                            <li>
+                                <a href="#testimonials">Contacto</a>
+                            </li>
+                            <li>
+                                <a href="#pricing">Planes</a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <!--End of Main Navigation-->
+
+                    <div id="nav-trigger"><span></span></div>
+                    <nav id="nav-mobile"></nav>
+
+                </div>
+            </div>
+        </div><!--End of Header-->
+
+        <!--Banner Content-->
+        <div id="banner-content" class="row clearfix">
+
+            <div class="col-61">
+
+                <div class="section-heading">
+                    <h1>RUSHAPOBETS</h1>
+                    <h2>La diferencia entre apostar y ganar está en el análisis. En RUSHAPOBETS no jugamos por intuición: trabajamos con datos, contexto y estadísticas para encontrar apuestas con verdadero valor. 
+</h2>
+                </div>
+
+                <!--Call to Action-->
+                <a href="https://t.me/TTVrushapo" target="_blank" class="button">ÚNETE A NOSOTROS HOY!!!</a>
+                <!--End Call to Action-->
+
+            </div>
+
+        </div><!--End of Row-->
+    </header>
+
+    <!--Main Content Area-->
+    <main id="content">
+
+        <!--Introduction-->
+        <section id="about" class="introduction scrollto">
+
+            <div class="row clearfix">
+
+                <div class="col-3">
+                    <div class="section-heading">
+                        <h3>RUSHAPOBETS</h3>
+                        <h2 class="section-title">QUIÉNES SOMOS</h2>
+                        <p class="section-subtitle">Mi nombre es Agustín y soy el tipster principal de RUSHAPOBETS. Pero esto no es un proyecto individual: Rushapo es un equipo de muchas personas que se dedican al análisis estadístico, tendencias, redes sociales y gestión de herramientas.</p>
+                        <p>Creemos en el trabajo en equipo, en el estudio constante y en construir una comunidad donde el conocimiento y la pasión por el deporte se compartan para ganar juntos.</p>
+                    </div>
+
+                </div>
+
+                <div class="col-2-3">
+
+                    <!--Icon Block-->
+                    <div class="col-2 icon-block icon-top wow fadeInUp" data-wow-delay="0.1s">
+                        <!--Icon-->
+                        <div class="icon">
+                            <i class="fa fa-futbol-o fa-2x"></i>
+                        </div>
+                        <!--Icon Block Description-->
+                        <div class="icon-block-description">
+                            <h4>Especialidad en Goles</h4>
+                            <p>Nos destacamos como analistas expertos en goles: Gol en Primera Parte, +0,5 HT, Gol Asiático +1 HT, Over 1,5 HT y Empate FT. Encontramos valor donde otros ven partidos sin interés.</p>
+                        </div>
+                    </div>
+                    <!--End of Icon Block-->
+
+                    <!--Icon Block-->
+                    <div class="col-2 icon-block icon-top wow fadeInUp" data-wow-delay="0.3s">
+                        <!--Icon-->
+                        <div class="icon">
+                            <i class="fa fa-line-chart fa-2x"></i>
+                        </div>
+                        <!--Icon Block Description-->
+                        <div class="icon-block-description">
+                            <h4>Análisis Estadístico</h4>
+                            <p>Utilizamos modelos estadísticos como Poisson, xG y tendencias históricas. Analizamos contexto, lesiones, calendario y motivación para detectar cuotas mal ajustadas.</p>
+                        </div>
+                    </div>
+                    <!--End of Icon Block-->
+
+                    <!--Icon Block-->
+                    <div class="col-2 icon-block icon-top wow fadeInUp" data-wow-delay="0.5s">
+                        <!--Icon-->
+                        <div class="icon">
+                            <i class="fa fa-users fa-2x"></i>
+                        </div>
+                        <!--Icon Block Description-->
+                        <div class="icon-block-description">
+                            <h4>Comunidad VIP</h4>
+                            <p>+150 apuestas mensuales con análisis completo, herramientas exclusivas y rentabilidad sostenida. Resultados recientes: Junio +127%, Mayo +195%, Abril +98% yield.</p>
+                        </div>
+                    </div>
+                    <!--End of Icon Block-->
+
+                    <!--Icon Block-->
+                    <div class="col-2 icon-block icon-top wow fadeInUp" data-wow-delay="0.7s">
+                        <!--Icon-->
+                        <div class="icon">
+                            <i class="fa fa-graduation-cap fa-2x"></i>
+                        </div>
+                        <!--Icon Block Description-->
+                        <div class="icon-block-description">
+                            <h4>Educación</h4>
+                            <p>Formamos apostadores inteligentes con contenido educativo diario, enseñanza sobre staking plan, value, psicología del apostador y juego responsable.</p>
+                        </div>
+                    </div>
+                    <!--End of Icon Block-->
+
+                </div>
+
+            </div>
+
+
+        </section>
+        <!--End of Introduction-->
+
+
+        <!--Gallery-->
+        <aside id="gallery" class="row text-center scrollto clearfix" data-featherlight-gallery
+                 data-featherlight-filter="a">
+
+                <div class="section-heading" style="width: 100%; margin-bottom: 40px;">
+                    <h3>RESULTADOS</h3>
+                    <h2 class="section-title">TESTIMONIOS Y GANANCIAS</h2>
+                    <p class="section-subtitle">Capturas reales de nuestros grupos de Telegram mostrando análisis exitosos, ganancias de miembros y la calidad de nuestro servicio.</p>
+                </div>
+
+                <a href="images/gallery-images/gallery-image-1.jpg" data-featherlight="image" class="col-3 wow fadeIn"
+                   data-wow-delay="0.1s"><img src="images/gallery-images/gallery-image-1.jpg" alt="Testimonios RUSHAPOBETS"/></a>
+                <a href="images/gallery-images/gallery-image-2.jpg" data-featherlight="image" class="col-3 wow fadeIn"
+                   data-wow-delay="0.3s"><img src="images/gallery-images/gallery-image-2.jpg" alt="Resultados VIP"/></a>
+                <a href="images/gallery-images/gallery-image-3.jpg" data-featherlight="image" class="col-3 wow fadeIn"
+                   data-wow-delay="0.5s"><img src="images/gallery-images/gallery-image-3.jpg" alt="Ganancias miembros"/></a>
+                <a href="images/gallery-images/gallery-image-4.jpg" data-featherlight="image" class="col-3 wow fadeIn"
+                   data-wow-delay="1.1s"><img src="images/gallery-images/gallery-image-4.jpg" alt="Análisis exitosos"/></a>
+                <a href="images/gallery-images/gallery-image-5.jpg" data-featherlight="image" class="col-3 wow fadeIn"
+                   data-wow-delay="0.9s"><img src="images/gallery-images/gallery-image-5.jpg" alt="Comunidad Telegram"/></a>
+                <a href="images/gallery-images/gallery-image-6.jpg" data-featherlight="image" class="col-3 wow fadeIn"
+                   data-wow-delay="0.7s"><img src="images/gallery-images/gallery-image-6.jpg" alt="Picks ganadores"/></a>
+
+        </aside>
+        <!--End of Gallery-->
+
+
+        <!--Content Section-->
+        <div id="services" class="scrollto clearfix">
+
+            <div class="row no-padding-bottom clearfix">
+
+                <!--Content Left Side-->
+                <div class="col-3">
+                    <div class="section-heading">
+                        <h3>NUESTRA MISIÓN</h3>
+                        <h2 class="section-title">METODOLOGÍA DE ANÁLISIS</h2>
+                        <p class="section-subtitle">"Crear una comunidad donde se combine el entretenimiento y estrategia en este fabuloso mundo que nos apasiona a los amantes del deporte y las apuestas; para así compartir datos, predicciones y pasión por ganar juntos."</p>
+                    </div>
+                    <p><strong>Nuestra forma de trabajar se basa en:</strong></p>
+                    <ul style="list-style: none; padding-left: 0;">
+                        <li>• Modelos estadísticos (Poisson, xG, tendencias históricas)</li>
+                        <li>• Estudio de contexto (lesiones, calendario, motivación, rotaciones)</li>
+                        <li>• Análisis de mercado y detección de cuotas mal ajustadas</li>
+                        <li>• Priorizamos apuestas de valor sobre popularidad</li>
+                    </ul>
+                </div>
+                <!--End Content Left Side-->
+
+                <!--Content of the Right Side-->
+                <div class="col-3">
+                    <div class="section-heading">
+                        <h3>VIP: RESULTADOS</h3>
+                        <h2 class="section-title">HERRAMIENTAS EXCLUSIVAS</h2>
+                        <p class="section-subtitle"><strong>Ganancias mensuales recientes:</strong><br>
+                        Junio: +127% yield | Mayo: +195% yield | Abril: +98% yield</p>
+                    </div>
+                    <p><strong>GRUPO VIP</strong></p>
+                    <ul style="list-style: none; padding-left: 0;">
+                        <li>• +150 apuestas mensuales con explicación y análisis</li>
+                        <li>• Acceso a herramientas exclusivas</li>
+                        <li>• Rentabilidad sostenida</li>
+                        <li>• Promoción actual: 30 USD/mes (40% off por TikTok)</li>
+                    </ul>
+                    <p><strong>Herramientas:</strong> Calculadora de probabilidad de goles, Rastreador de value bets, PDF educativos de gestión de banca</p>
+                    <a href="https://t.me/TTVrushapo" target="_blank" class="button">
+                        ÚNETE AL VIP <i class="fa fa-star" aria-hidden="true"></i>
+                    </a>
+                </div>
+                <!--End Content Right Side-->
+
+                <div class="col-3">
+                    <div class="section-heading">
+                        <h3>EDUCACIÓN</h3>
+                        <h2 class="section-title">GRUPO FREE</h2>
+                    </div>
+                    <p><strong>Creemos en formar apostadores inteligentes:</strong></p>
+                    <ul style="list-style: none; padding-left: 0;">
+                        <li>• Contenido educativo a diario</li>
+                        <li>• Enseñamos staking plan, value y psicología</li>
+                        <li>• Promovemos el juego responsable</li>
+                        <li>• No perseguimos, no forzamos picks</li>
+                    </ul>
+                    <p><strong>GRUPO FREE incluye:</strong></p>
+                    <ul style="list-style: none; padding-left: 0;">
+                        <li>• Picks gratuitos</li>
+                        <li>• Recomendaciones limitadas pero efectivas</li>
+                        <li>• Acceso a parte del contenido educativo</li>
+                    </ul>
+                    <a href="https://t.me/rushapobets" target="_blank" class="button">
+                        GRUPO GRATUITO <i class="fa fa-telegram" aria-hidden="true"></i>
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+        <!--End of Content Section-->
+
+        <!--Testimonials-->
+        <aside id="testimonials" class="scrollto text-center" data-enllax-ratio=".2">
+
+            <div class="row clearfix">
+
+                <div class="section-heading">
+                    <h3>CONTACTO</h3>
+                    <h2 class="section-title">CÓMO UNIRTE</h2>
+                    <p class="section-subtitle">Podés unirte a nuestras comunidades o contactarnos directamente. No buscamos vender un sueño. Buscamos formar una comunidad rentable, inteligente y profesional.</p>
+                </div>
+
+                <!--Contact Block-->
+                <div class="col-3 testimonial classic">
+                    <i class="fa fa-telegram fa-3x" style="color: #d4af37; margin-bottom: 20px;"></i>
+                    <h4>Telegram VIP</h4>
+                    <p>Acceso completo con +150 apuestas mensuales y herramientas exclusivas</p>
+                    <footer><strong></strong></footer>
+                </div>
+                <!-- End of Contact Block-->
+
+                <!--Contact Block-->
+                <div class="col-3 testimonial classic">
+                    <i class="fa fa-telegram fa-3x" style="color: #d4af37; margin-bottom: 20px;"></i>
+                    <h4>Telegram Free</h4>
+                    <p>Picks gratuitos y contenido educativo limitado pero efectivo</p>
+                    <footer><strong></strong></footer>
+                </div>
+                <!-- End of Contact Block-->
+
+                <!--Contact Block-->
+                <div class="col-3 testimonial classic">
+                    <i class="fa fa-instagram fa-3x" style="color: #d4af37; margin-bottom: 20px;"></i>
+                    <h4>Redes Sociales</h4>
+                    <p>Síguenos en Instagram y TikTok para contenido diario y actualizaciones</p>
+                    <footer><strong></strong></footer>
+                </div>
+                <!-- End of Contact Block-->
+
+            </div>
+
+        </aside>
+        <!--End of Testimonials-->
+
+        <!--Pricing Tables-->
+        <section id="pricing" class="secondary-color text-center scrollto clearfix ">
+            <div class="row clearfix">
+
+                <div class="section-heading">
+                    <h3>Precios</h3>
+                    <h2 class="section-title">PLANES</h2>
+                </div>
+
+                <!--Plan Free Block-->
+                <div class="pricing-block col-3 wow fadeInUp" data-wow-delay="0.4s">
+                    <div class="pricing-block-content">
+                        <h3>Gratis</h3>
+                        <p class="pricing-sub">Plan Gratuito</p>
+                        <div class="pricing">
+                            <div class="price"><span>$</span>0</div>
+                            <p>Gratis para siempre</p>
+                        </div>
+                        <ul style="text-align: left;">
+                            <li>Picks gratuitos</li>
+                            <li>Recomendaciones limitadas pero efectivas</li>
+                            <li>Acceso a parte del contenido educativo</li>
+                        </ul>
+                        <a href="https://t.me/rushapobets" target="_blank" class="button">ÚNETE GRATIS</a>
+                    </div>
+                </div>
+                <!--End Plan Free Block-->
+
+                <!--FAQ Block-->
+                <div class="pricing-block featured col-3 wow fadeInUp" data-wow-delay="0.6s">
+                    <div class="pricing-block-content">
+                        <h3>VIP</h3>
+                        <p class="pricing-sub">Promoción actual</p>
+                        <div class="pricing">
+                            <div class="price"><span>$</span>30</div>
+                            <p>USD mensuales (precio regular 50 USD)</p>
+                        </div>
+                        <ul style="text-align: left;">
+                            <li>+150 apuestas mensuales</li>
+                            <li>Herramientas exclusivas</li>
+                            <li>Análisis completos</li>
+                            <li>Servicio personalizado y educación constante</li>
+                        </ul>
+                        <a href="https://t.me/TTVrushapo" target="_blank" class="button">ÚNETE AL VIP</a>
+                    </div>
+                </div>
+                <!--End FAQ Block-->
+
+                <!--FAQ Block-->
+                <div class="pricing-block col-3 wow fadeInUp" data-wow-delay="0.8s">
+                    <div class="pricing-block-content">
+                        <h3>¿Es necesaria experiencia?</h3>
+                        <p class="pricing-sub">Para principiantes</p>
+                        <div class="pricing" style="background: none; padding: 15px;">
+                            <p style="font-size: 16px; line-height: 1.5;">No. En RUSHAPOBETS también enseñamos: vas a aprender desde lo básico hasta conceptos avanzados. Trabajamos con gestión de banca y stake bajo para proteger tu capital.</p>
+                        </div>
+                        <ul style="text-align: left; font-size: 15px;">
+                            <li>Educación desde cero</li>
+                            <li>Gestión de banca</li>
+                            <li>Conceptos avanzados</li>
+                            <li>Juego responsable</li>
+                        </ul>
+                    </div>
+                </div>
+                <!--End FAQ Block-->
+
+            </div>
+        </section>
+        <!--End of Pricing Tables-->
+
+    </main>
+    <!--End Main Content Area-->
+
+
+    <!--Footer-->
+    <footer id="landing-footer" class="clearfix">
+        <div class="row clearfix">
+
+            <!--Social Icons in Footer-->
+            <ul class="col-2 social-icons">
+                <li>
+                    <a target="_blank" title="Facebook" href="https://www.facebook.com/rushapobets">
+                        <i class="fa fa-facebook fa-1x"></i><span>Facebook</span>
+                    </a>
+                </li>
+                <li>
+                    <a target="_blank" title="TikTok" href="https://www.tiktok.com/@rushapobets">
+                        <img src="images/tiktok.png" alt="TikTok" style="width: 18px; height: 18px;"><span>TikTok</span>
+                    </a>
+                </li>
+                <li>
+                    <a target="_blank" title="Telegram" href="https://t.me/rushapobets">
+                        <i class="fa fa-paper-plane fa-1x"></i><span>Telegram</span>
+                    </a>
+                </li>
+                <li>
+                    <a target="_blank" title="Instagram" href="http://www.instagram.com/rushapobets">
+                        <i class="fa fa-instagram fa-1x"></i><span>Instagram</span>
+                    </a>
+                </li>
+            </ul>
+            <!--End of Social Icons in Footer-->
+        </div>
+    </footer>
+    <!--End of Footer-->
+
+</div>
+
+<!-- Include JavaScript resources -->
+<script src="js/jquery.1.8.3.min.js"></script>
+<script src="js/wow.min.js"></script>
+<script src="js/featherlight.min.js"></script>
+<script src="js/featherlight.gallery.min.js"></script>
+<script src="js/jquery.enllax.min.js"></script>
+<script src="js/jquery.scrollUp.min.js"></script>
+<script src="js/jquery.easing.min.js"></script>
+<script src="js/jquery.stickyNavbar.min.js"></script>
+<script src="js/jquery.waypoints.min.js"></script>
+<script src="js/images-loaded.min.js"></script>
+<script src="js/lightbox.min.js"></script>
+<script src="js/site.js"></script>
+
+<!-- Script para modo oscuro -->
+<script>
+function toggleDarkMode() {
+    const body = document.body;
+    const button = document.querySelector('.dark-mode-toggle');
+    
+    body.classList.toggle('dark-mode');
+    
+    // Cambiar el icono del botón
+    if (body.classList.contains('dark-mode')) {
+        button.innerHTML = '☀️';
+        button.title = 'Cambiar a modo claro';
+        // Guardar preferencia en localStorage
+        localStorage.setItem('darkMode', 'enabled');
+    } else {
+        button.innerHTML = '🌙';
+        button.title = 'Cambiar a modo oscuro';
+        // Guardar preferencia en localStorage
+        localStorage.setItem('darkMode', 'disabled');
+    }
+}
+
+// Cargar preferencia guardada al cargar la página
+document.addEventListener('DOMContentLoaded', function() {
+    const darkModePreference = localStorage.getItem('darkMode');
+    const button = document.querySelector('.dark-mode-toggle');
+    
+    if (darkModePreference === 'enabled') {
+        document.body.classList.add('dark-mode');
+        button.innerHTML = '☀️';
+        button.title = 'Cambiar a modo claro';
+    }
+});
+</script>
+
+
+</body>
+</html>
